@@ -4,18 +4,19 @@
 //
 //  Created by 姚佳宏MacMiniM1 on 2022/10/22.
 //
+// 這支程式主要想以SwiftUI簡單地 Demo iOS App 畫面佈局的方法，包括各種UI物件的優化。
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         ZStack{
-            //rgba(22, 160, 133,1.0)
+            //調整背景色
             Color(red: 0.09, green: 0.63, blue: 0.52).edgesIgnoringSafeArea(.all)
             VStack {
                 
-                 
                 VStack {
+                    // 為 image 進行優化，包括尺寸調整、加上圓框等
                     Image("yao")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -24,6 +25,7 @@ struct ContentView: View {
                         .overlay(
                             Circle().stroke(Color.white,lineWidth: 2)
                         )
+                    //為"Chiahong Yao"套上Custom字形
                     Text("Chiahong Yao")
                         .font(Font.custom("Pacifico-Regular", size: 40))
                         .bold()
@@ -31,7 +33,9 @@ struct ContentView: View {
                     Text("iOS Developer")
                         .font(.system(size: 25))
                         .foregroundColor(.white)
+                    //增加分隔線
                     Divider()
+                    //利用 extracted view 方式來簡化並重複使用程式碼
                     InfoView(text: "+886 920 915 353", imageName: "phone.fill")
                     InfoView(text: "to..yao@gmail.com", imageName: "envelope.fill")
                         
